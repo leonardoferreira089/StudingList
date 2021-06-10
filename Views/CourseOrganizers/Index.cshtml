@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CSO_LF089.Models.CourseOrganizer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">My Courses</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">Create New</a>
+    </div>
+</div>
+<table class="table table-striped" border="0">
+    <thead>
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subjects)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.purchased)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subjects)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.CourseDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localization)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.purchased)
+                </td>
+                <td>
+                    <partial name="_ButtonPartial" model="@item.Id" />
+                </td>
+        </tr>
+}
+        </tbody>
+</table>
